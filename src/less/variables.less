@@ -1,0 +1,49 @@
+
+@color-default: #555;
+@color-default-lighter: #999;
+@color-default-darker: #333;
+
+@color-x: 12%; // Delta of a value (of a color in the HSL color space)
+@color-l-max: 93%; // Max value of the lightness (of a color in the HSL color space) for pastel colors
+
+// Used for "main" contents (like form elements and more...)
+@color1-base: hsl(195, 98%, 48%);
+@color1-base-darker: darken(desaturate(@color1-base, @color-x), @color-x);
+@color1-pale: hsl(hue(@color1-base), saturation(@color1-base) - @color-x, @color-l-max);
+@color1-pale-darker: desaturate(darken(@color1-pale, @color-x), @color-x);
+
+// Used for "wrapper" contents (like the interface header and more...)
+@color2-base: hsl(202, 98%, 37%);
+@color2-base-darker: darken(desaturate(@color2-base, @color-x), @color-x);
+@color2-pale: hsl(hue(@color2-base), saturation(@color2-base) - @color-x, @color-l-max);
+@color2-pale-darker: desaturate(darken(@color2-pale, @color-x), @color-x);
+
+// Used for "side" contents (like the sidebar and more...)
+@color3-base: hsl(200, 18%, 26%);
+@color3-base-darker: darken(desaturate(@color3-base, @color-x), @color-x);
+@color3-pale: hsl(hue(@color3-base), saturation(@color3-base) - @color-x, @color-l-max);
+@color3-pale-darker: desaturate(darken(@color3-pale, @color-x), @color-x);
+
+// Used for "alternate" contents (like the main background, login form background, sub-menu and more...)
+@color4-base: hsl(16, 25%, 38%);
+@color4-base-darker: darken(desaturate(@color4-base, @color-x), @color-x);
+@color4-pale: hsl(hue(@color4-base), saturation(@color4-base) - @color-x, @color-l-max);
+@color4-pale-darker: desaturate(darken(@color4-pale, @color-x), @color-x);
+
+@line-height: 1.5em;
+
+@font-size: 16px;
+@font-size-small: 14px;
+@font-size-smaller: .92em;
+
+@border-radius: 5px;
+@border-radius-small: 3px;
+
+@screen-large: 960px;
+@screen-small: 480px;
+
+// layout
+@layout-space: 8px;
+@layout-shadow: 0 0 15px rgba(0,0,0, .5);
+@layout-main-width: 650px;
+@layout-sidebar-width: 250px;

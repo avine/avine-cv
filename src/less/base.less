@@ -1,0 +1,77 @@
+
+@font-face {
+    font-family: 'FontText';
+    src: url(../static/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf);
+}
+@font-face {
+    font-family: 'FontTitle';
+    src: url(../static/fonts/Oswald/Oswald-Regular.ttf);
+}
+
+body {
+    margin: 0;
+    background-color: #ecd8bc;
+    background-image: url(../static/images/bg/retina_wood_@2X.png);
+    background-size: 512px 512px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    font-family: 'FontText', sans-serif;
+    font-size: @font-size;
+    color: @color-default;
+    text-shadow: 1px 1px 0 rgba(255,255,255, .5);
+    transition: background ease .1s;
+}
+@media (max-width: @screen-small) {
+    body {
+        font-size: @font-size-small;
+    }
+}
+
+a, a:link, .link {
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1px solid @color1-base;
+    color: @color1-base;
+    transition: border .2s ease, color .2s ease;
+}
+a:hover, a:active, a:focus, .link:hover {
+    text-decoration: none;    
+    border-bottom-color: transparent;
+    color: @color1-base-darker;
+}
+.link-noborder {
+    border-bottom-color: transparent !important;
+}
+.link-active {
+    .link-noborder;
+    color: @color-default-lighter !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'FontTitle', sans-serif;
+    font-weight: normal; // Optional
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+    margin-bottom: @line-height / 2;
+}
+h1 {
+    color: @color4-base;
+    margin-bottom: 1em;
+}
+h4 {
+    font-weight: normal; // Required
+}
+h4, h5, h6 {
+    font-size: 1em;
+}
+p {
+    line-height: @line-height;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid @color4-pale-darker;
+    margin: @line-height 0;    
+}
