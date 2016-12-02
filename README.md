@@ -51,6 +51,14 @@
 }
 ```
 
+###Dev environment
+
+```javascript
+{
+  "dev": "npm run folder -s && npm run plugins -s && npm run css -s && npm run js -s"
+}
+```
+
 ###Bundle `css`
 
 ```javascript
@@ -60,5 +68,30 @@
   "_tmp:app": "cleancss dist/css/app.min.css -o dist/tmp/2.css",
   "prod:css": "npm run _tmp:fa -s && npm run _tmp:app -s",
   "postprod:css": "shx cat dist/tmp/*.css | cleancss -o dist/bundle/bundle.min.css --s0"
+}
+```
+
+###Bundle `js`
+
+```javascript
+{
+  "prod:js": "uglifyjs dist/js/app.min.js -o dist/bundle/bundle.min.js"
+}
+```
+
+###Prod environment
+
+```javascript
+{
+  "prod": "npm run prod:css -s && npm run prod:js -s"
+}
+```
+
+###Build and local server
+
+```javascript
+{
+  "build": "npm run dev -s && npm run prod -s",
+  "server": "http-server ./dist/ -o"
 }
 ```
