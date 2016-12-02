@@ -43,7 +43,7 @@
 "postjs": "uglifyjs dist/js/app.js -m -o dist/js/app.min.js --in-source-map dist/js/app.js.map --source-map dist/js/app.min.js.map --source-map-url app.min.js.map --source-map-root app/js"
 ```
 
-###Dev environment
+###Build development environment
 
 ```javascript
 "dev": "npm run folder -s && npm run plugins -s && npm run css -s && npm run js -s"
@@ -65,13 +65,13 @@
 "prod:js": "uglifyjs dist/js/app.min.js -o dist/bundle/bundle.min.js"
 ```
 
-###Prod environment
+###Build production environment
 
 ```javascript
 "prod": "npm run prod:css -s && npm run prod:js -s"
 ```
 
-###Build and local server
+###Build all and browse on local server
 
 ```javascript
 "build": "npm run dev -s && npm run prod -s",
