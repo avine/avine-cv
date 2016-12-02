@@ -7,7 +7,7 @@
   - `npm run build`
 
 - To browse locally, run `npm run server` and go to one of the locations:
-  - `/dist/index.html` for the **dev** environment (available debugging of .css and .js using sourcemaps)
+  - `/dist/index.html` for the **dev** environment (available debugging of .css and .js using sourcemaps)
   - `/dist/bundle.html` for the **prod** environment (compressed version)
 
 - To browse remotely, feel free to visit my website at: http://avine.fr/.
