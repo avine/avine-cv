@@ -5,4 +5,4 @@ import "./scroll.js";
 import "./toggle.js";
 import "./skills.js";
 import "./contact.js";
-import "./parallax.js";
+//import "./parallax.js";
