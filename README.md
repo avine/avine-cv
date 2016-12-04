@@ -100,3 +100,6 @@ To browse remotely, feel free to visit my website at: http://avine.fr/.
 "server:prod": "http-server ./dist/ -o",
 "env:prod": "npm run build -s && npm run server:prod -s"
 ```
+
+![Avine](http://avine.fr/static/images/logos/logo-128.png)
+
