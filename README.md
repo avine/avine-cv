@@ -1,79 +1,102 @@
-# Avine CV
+# My Curriculum Vitae - Avine
 
-##My Curriculum Vitae
+## Commands shortcuts
 
-- To build the website in the `dist/` directory, run both:
-  - `npm install`
-  - `npm run build`
+1. To install locally the project dependencies execute `npm install`.
 
-- To browse locally, run `npm run server` and go to one of the locations:
-  - `/dist/index.html` for the **dev** environment (available debugging of .css and .js using sourcemaps)
-  - `/dist/bundle.html` for the **prod** environment (compressed version)
+2. To build the app locally in a "dev" environment execute `npm run env:dev` which will:
+  - build the app in the `dist/` directory
+  - start a local server and open your default browser at http://127.0.0.1:8080/
 
-- To browse remotely, feel free to visit my website at: http://avine.fr/.
+Once it is done, just browse to location `/dist/index.html`.
+You'll be able to debug styles and scripts (based on sourcemaps) right from the browser.
+You'll also be able to change the source code in the `src/` directory and see the result on the fly.
+(by the way, to stop the local server, just press `CTRL+C` in the terminal).
 
-##About the package.json scripts
+3. To build the app locally in a "prod" environment execute `npm run env:prod`.
 
-###Create `dist` folder structure
+To browse remotely, feel free to visit my website at: http://avine.fr/.
+
+## About the package.json scripts
+
+### Make the `dist` folders structure
 
 ```javascript
 "folder:clean": "shx rm -rf dist/",
-"folder:build": "shx mkdir -p dist/css dist/js dist/bundle && shx cp -r src/** dist/",
-"folder": "npm run folder:clean -s && npm run folder:build -s"
+"folder:make": "shx mkdir -p dist/css dist/js dist/bundle && shx cp src/*.* dist/ && shx cp -r src/static dist/",
+"folder": "npm run folder:clean -s && npm run folder:make -s",
 ```
 
-###Move `css` plugins
+### Move `css` plugins
 
 ```javascript
 "plugins:fa": "shx mkdir dist/css/font-awesome && shx cp -r node_modules/font-awesome/css/ node_modules/font-awesome/fonts/ dist/css/font-awesome/",
-"plugins": "npm run plugins:fa -s"
+"plugins": "npm run plugins:fa -s",
 ```
 
-###Compile `less` to `css`
+### Compile `less` to `css`
 
 ```javascript
-"css": "lessc --autoprefix --source-map dist/app/less/app.less dist/app/less/app.css",
-"postcss": "cleancss --source-map dist/app/less/app.css -o dist/css/app.min.css"
+"css": "lessc --autoprefix --source-map src/less/app.less dist/css/app.css",
+"postcss": "cleancss --source-map dist/css/app.css -o dist/css/app.min.css",
 ```
 
-###Transpile `js`
+### Transpile `js` ES6 to ES5
 
 ```javascript
-"js": "browserify dist/app/js/app.js -t [ babelify ] -d | exorcist dist/js/app.js.map > dist/js/app.js",
-"postjs": "uglifyjs dist/js/app.js -m -o dist/js/app.min.js --in-source-map dist/js/app.js.map --source-map dist/js/app.min.js.map --source-map-url app.min.js.map --source-map-root app/js"
+"js": "browserify src/js/app.js -t [ babelify ] -d | exorcist dist/js/app.js.map > dist/js/app.js",
+"postjs": "uglifyjs dist/js/app.js -m -o dist/js/app.min.js --in-source-map dist/js/app.js.map --source-map dist/js/app.min.js.map --source-map-url app.min.js.map --source-map-root app/js",
 ```
 
-###Build development environment
+### Build the "dev" environment
 
 ```javascript
-"dev": "npm run folder -s && npm run plugins -s && npm run css -s && npm run js -s"
+"build:dev": "npm run folder -s && npm run plugins -s && npm run css -s && npm run js -s",
 ```
 
-###Bundle `css`
+### Watch files
+
+```javascript
+"watch:css": "chokidar 'src/less' -c 'npm run css && echo $(tput setaf 2)css done$(tput sgr0)'",
+"watch:js": "chokidar 'src/js' -c 'npm run js && echo $(tput setaf 2)js done$(tput sgr0)'",
+"watch:static": "chokidar 'src/*.*' 'src/static' -c 'shx cp -ru src/*.* src/static dist/ && echo $(tput setaf 2)static done$(tput sgr0)'",
+"watch": "npm run watch:css -s & npm run watch:js -s & npm run watch:static -s",
+```
+
+### Run local server in "dev" environment
+
+```javascript
+"server:dev": "http-server ./ -o",
+"env:dev": "npm run build:dev -s && ( npm run watch -s & npm run server:dev -s )",
+```
+
+### Bundle `css` for production
 
 ```javascript
 "preprod:css": "shx mkdir dist/tmp/",
 "_tmp:fa": "cleancss dist/css/font-awesome/css/font-awesome.min.css -o dist/tmp/1.css",
 "_tmp:app": "cleancss dist/css/app.min.css -o dist/tmp/2.css",
 "prod:css": "npm run _tmp:fa -s && npm run _tmp:app -s",
-"postprod:css": "shx cat dist/tmp/*.css | cleancss -o dist/bundle/bundle.min.css --s0"
+"postprod:css": "shx cat dist/tmp/*.css | cleancss -o dist/bundle/bundle.min.css --s0 && shx rm -r dist/tmp/",
 ```
 
-###Bundle `js`
+### Bundle `js` for production
 
 ```javascript
-"prod:js": "uglifyjs dist/js/app.min.js -o dist/bundle/bundle.min.js"
+"prod:js": "uglifyjs dist/js/app.min.js -o dist/bundle/bundle.min.js",
 ```
 
-###Build production environment
+### Get the `index.html` for production
 
 ```javascript
-"prod": "npm run prod:css -s && npm run prod:js -s"
+"prod:index": "node useref.js",
 ```
 
-###Build all and browse on local server
+### Build the "prod" environment
 
 ```javascript
-"build": "npm run dev -s && npm run prod -s",
-"server": "http-server ./dist/ -o"
+"build:prod": "npm run prod:css -s && npm run prod:js -s && npm run prod:index -s",
+"build": "npm run build:dev -s && npm run build:prod -s",
+"server:prod": "http-server ./dist/ -o",
+"env:prod": "npm run build -s && npm run server:prod -s"
 ```
