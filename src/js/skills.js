@@ -1,9 +1,7 @@
 /*! @author: Stephane Francel - Avine.fr */
 "use strict";
 
-import jQuery from "jquery";
-
-jQuery(document).ready(function ($) {
+export default function ($) {
 
   var $skills = $("#skills").addClass("skills-stop");
 
@@ -22,4 +20,4 @@ jQuery(document).ready(function ($) {
     $skills["open" == status ? "removeClass" : "addClass"]("skills-stop");
   });
 
-});
+}

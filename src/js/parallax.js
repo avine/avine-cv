@@ -1,9 +1,7 @@
 /*! @author: Stephane Francel - Avine.fr */
 "use strict";
 
-import jQuery from "jquery";
-
-jQuery(document).ready(function ($) {
+export default function ($) {
     
   var bodyBgSpeed = .15; // number between 0 and 1
   var topFadeout = 30; // number >= 0 (px)
@@ -18,4 +16,4 @@ jQuery(document).ready(function ($) {
     $top[scrollTop > topFadeout ? "addClass" :  "removeClass"]("top-fadeout");
   });
     
-});
+}

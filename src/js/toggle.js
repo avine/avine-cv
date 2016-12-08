@@ -1,9 +1,7 @@
 /*! @author: Stephane Francel - Avine.fr */
 "use strict";
 
-import jQuery from "jquery";
-
-jQuery(document).ready(function ($) {
+export default function ($) {
 
   $(".toggle").each(function () {
     var $toggle = $(this),
@@ -14,4 +12,4 @@ jQuery(document).ready(function ($) {
     });
   });
 
-});
+}
