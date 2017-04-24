@@ -1,4 +1,4 @@
-/*! @author: Stephane Francel - Avine.fr */
+/*! @author: Stephane Francel - avine.io */
 "use strict";
 
 export default function ($) {
