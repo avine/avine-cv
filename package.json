@@ -19,7 +19,7 @@
     "watch:js": "chokidar 'src/js' -c 'npm run js && echo $(tput setaf 2)js done$(tput sgr0)'",
     "watch:static": "chokidar 'src/*.*' 'src/static' -c 'shx cp -ru src/*.* src/static dist/ && echo $(tput setaf 2)static done$(tput sgr0)'",
     "watch": "npm run watch:css -s & npm run watch:js -s & npm run watch:static -s",
-    "server:dev": "http-server ./ -o",
+    "server:dev": "http-server ./ -o -c0",
     "env:dev": "npm run build:dev -s && ( npm run watch -s & npm run server:dev -s )",
     "preprod:css": "shx mkdir dist/tmp/",
     "_tmp:fa": "cleancss dist/css/font-awesome/css/font-awesome.min.css -o dist/tmp/1.css",
@@ -30,7 +30,7 @@
     "prod:index": "node useref.js",
     "build:prod": "npm run prod:css -s && npm run prod:js -s && npm run prod:index -s",
     "build": "npm run build:dev -s && npm run build:prod -s",
-    "server:prod": "http-server ./dist/ -o",
+    "server:prod": "http-server ./dist/ -o -c0",
     "env:prod": "npm run build -s && npm run server:prod -s",
     "test": "mocha"
   },
