@@ -15,8 +15,6 @@ You'll also be able to change the source code in the `src/` directory and see th
 
 3. To build the app locally in a "prod" environment execute `npm run env:prod`.
 
-To browse remotely, feel free to visit my website at: http://cv.avine.io/.
-
 ## About the package.json scripts
 
 ### Make the `dist` folders structure
@@ -66,7 +64,7 @@ To browse remotely, feel free to visit my website at: http://cv.avine.io/.
 ### Run local server in "dev" environment
 
 ```javascript
-"server:dev": "http-server ./ -o",
+"server:dev": "http-server ./ -o -c0",
 "env:dev": "npm run build:dev -s && ( npm run watch -s & npm run server:dev -s )",
 ```
 
@@ -97,8 +95,8 @@ To browse remotely, feel free to visit my website at: http://cv.avine.io/.
 ```javascript
 "build:prod": "npm run prod:css -s && npm run prod:js -s && npm run prod:index -s",
 "build": "npm run build:dev -s && npm run build:prod -s",
-"server:prod": "http-server ./dist/ -o",
+"server:prod": "http-server ./dist/ -o -c0",
 "env:prod": "npm run build -s && npm run server:prod -s"
 ```
 
-![Avine](http://cv.avine.io/static/images/logos/logo-128.png)
+![Avine](https://avine.io/cv/static/images/logos/logo-128.png)
