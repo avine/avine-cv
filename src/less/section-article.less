@@ -25,6 +25,10 @@ article {
     > h4:first-child {
         color: @color-default-lighter;
 
+        u {
+            font-size: 0.75em;         
+            text-decoration: none;
+        }
         em {
             font-size: .85em;
             float: right;
@@ -45,9 +49,17 @@ article {
         display: flex;
         flex-direction: row;
 
-        > h4:first-child em {
-            float: none;
-            display: block;
+        > h4:first-child {
+            u {
+                float: none;
+                display: block;
+                text-decoration: none;
+                font-size: 0.8em;         
+            }
+            em {
+                float: none;
+                display: block;
+            }
         }
 
         > :first-child {
