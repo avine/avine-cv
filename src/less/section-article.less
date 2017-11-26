@@ -19,6 +19,19 @@ article {
     box-sizing: border-box;
     padding: .5em;
 
+    h3 {
+        line-height: 1.3em;
+
+        em {
+            font-size: 0.9em;
+            font-style: normal;
+            font-weight: normal;
+            font-family: 'FontText';
+            text-transform: uppercase;
+            color: @color4-base;
+        }
+    }
+
     &:nth-child(odd) {
         background-color: rgba(0,0,0, .05);
     }
@@ -37,6 +50,13 @@ article {
     footer {
         margin-bottom: @line-height / 2;
         font-size: .85em;
+        line-height: 1.35em;
+        color: @color-default-lighter;
+        
+        b {
+            margin: 0 0.1em;
+            color: @color4-base;            
+        }
     }
 }
 
