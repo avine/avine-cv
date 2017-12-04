@@ -2,18 +2,15 @@
 
 ## Commands shortcuts
 
-1. To install locally the project dependencies execute `npm install`.
-
-2. To build the app locally in a "dev" environment execute `npm run env:dev` which will:
+1. To build the app locally in a "dev" environment execute `npm run env:dev` which will:
   - build the app in the `dist/` directory
-  - start a local server and open your default browser at http://127.0.0.1:8080/
+  - start a local server and open your default browser
 
-Once it is done, just browse to location `/dist/index.html`.
 You'll be able to debug styles and scripts (based on sourcemaps) right from the browser.
 You'll also be able to change the source code in the `src/` directory and see the result on the fly.
 (by the way, to stop the local server, just press `CTRL+C` in the terminal).
 
-3. To build the app locally in a "prod" environment execute `npm run env:prod`.
+2. To build the app locally in a "prod" environment execute `npm run env:prod`.
 
 ## About the package.json scripts
 
@@ -43,7 +40,8 @@ You'll also be able to change the source code in the `src/` directory and see th
 
 ```javascript
 "js": "browserify src/js/app.js -t [ babelify ] -d | exorcist dist/js/app.js.map > dist/js/app.js",
-"postjs": "uglifyjs dist/js/app.js -m -o dist/js/app.min.js --in-source-map dist/js/app.js.map --source-map dist/js/app.min.js.map --source-map-url app.min.js.map --source-map-root app/js",
+"postjs": "uglifyjs dist/js/app.js -m -o dist/js/app.min.js --in-source-map dist/js/app.js.map --source-map filename=dist/js/app.min.js.map,url=app.min.js.map,root=app/js",
+
 ```
 
 ### Build the "dev" environment
@@ -55,17 +53,17 @@ You'll also be able to change the source code in the `src/` directory and see th
 ### Watch files
 
 ```javascript
-"watch:css": "chokidar 'src/less' -c 'npm run css && echo $(tput setaf 2)css done$(tput sgr0)'",
-"watch:js": "chokidar 'src/js' -c 'npm run js && echo $(tput setaf 2)js done$(tput sgr0)'",
-"watch:static": "chokidar 'src/*.*' 'src/static' -c 'shx cp -ru src/*.* src/static dist/ && echo $(tput setaf 2)static done$(tput sgr0)'",
-"watch": "npm run watch:css -s & npm run watch:js -s & npm run watch:static -s",
+"watch:css": "chokidar \"src/less\" -c \"npm run css && echo $(tput setaf 2)css done$(tput sgr0)\"",
+"watch:js": "chokidar \"src/js\" -c \"npm run js && echo $(tput setaf 2)js done$(tput sgr0)\"",
+"watch:static": "chokidar \"src/*.*\" \"src/static\" -c \"shx cp -ru src/*.* src/static dist/ && echo $(tput setaf 2)static done$(tput sgr0)\"",
+"watch": "concurrently \"npm run watch:css -s\" \"npm run watch:js -s\" \"npm run watch:static -s\"",
 ```
 
 ### Run local server in "dev" environment
 
 ```javascript
-"server:dev": "http-server ./ -o -c0",
-"env:dev": "npm run build:dev -s && ( npm run watch -s & npm run server:dev -s )",
+"server:dev": "browser-sync start --server dist/ --files dist/ --no-notify",
+"env:dev": "npm run build:dev -s && concurrently \"npm run watch -s\" \"npm run server:dev -s\"",
 ```
 
 ### Bundle `css` for production
@@ -95,8 +93,8 @@ You'll also be able to change the source code in the `src/` directory and see th
 ```javascript
 "build:prod": "npm run prod:css -s && npm run prod:js -s && npm run prod:index -s",
 "build": "npm run build:dev -s && npm run build:prod -s",
-"server:prod": "http-server ./dist/ -o -c0",
-"env:prod": "npm run build -s && npm run server:prod -s"
+"server:prod": "browser-sync start --server dist/ --no-notify",
+"env:prod": "npm run build -s && npm run server:prod -s",
 ```
 
 ![Avine](https://avine.io/cv/static/images/logos/logo-128.png)
