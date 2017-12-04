@@ -93,8 +93,11 @@ article {
 
 .section-reveal-init {
     opacity: 0;
+    transform: translate(0, 1em) scale(1.05, 1.05);
+    transform-origin: center top;
 }
 .section-reveal-show {
     opacity: 1;
-    transition: opacity ease .5s .5s;
+    transform: translate(0, 0) scale(1, 1);
+    transition: all ease-out .6s .4s;
 }
