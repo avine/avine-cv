@@ -2,7 +2,7 @@
 
 ## Commands shortcuts
 
-1. To build the app locally in a "dev" environment execute `npm run env:dev` or `npm start` which is an alias and will:
+1. To build the app locally in a "dev" environment execute `npm run env:dev` which will:
   - build the app in the `dist/` directory
   - start a local server and open your default browser
 
@@ -10,7 +10,7 @@ You'll be able to debug styles and scripts (based on sourcemaps) right from the 
 You'll also be able to change the source code in the `src/` directory and see the result on the fly.
 (by the way, to stop the local server, just press `CTRL+C` in the terminal).
 
-2. To build the app locally in a "prod" environment execute `npm run env:prod`.
+2. To build the app locally in a "prod" environment execute `npm run env:prod` (or `npm start` which is an alias).
 
 ## About the package.json scripts
 
@@ -95,6 +95,7 @@ You'll also be able to change the source code in the `src/` directory and see th
 "build": "npm run build:dev -s && npm run build:prod -s",
 "server:prod": "browser-sync start --server dist/ --no-notify",
 "env:prod": "npm run build -s && npm run server:prod -s",
+"start": "npm run env:prod",
 ```
 
 ![Avine](https://avine.io/cv/static/images/logos/logo-128.png)
