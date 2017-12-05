@@ -1,57 +1,57 @@
 
 #sidebar {
-    > h2 {
-        color: @color-default-darker;
-    }
-    footer.toggle > :last-child {
-        font-size: @font-size-smaller;
-    }
+  > h2 {
+    color: @color-default-darker;
+  }
+  footer.toggle > :last-child {
+    font-size: @font-size-smaller;
+  }
 
-    @media (max-width: (@screen-large - 1)) {
-        footer.toggle {
-            > :first-child {
-                position: relative;
-                z-index: 1;
-                float: left;
-            }
-            &:after {
-                content: "";
-                clear: left;
-                display: block;
-            }
-            > :last-child {
-                margin-left: 1.5em;
-            }
-            &.toggle-open > :first-child {
-                .link-active;
-            }
-        }
+  @media (max-width: (@screen-large - 1)) {
+    footer.toggle {
+      > :first-child {
+        position: relative;
+        z-index: 1;
+        float: left;
+      }
+      &:after {
+        content: "";
+        clear: left;
+        display: block;
+      }
+      > :last-child {
+        margin-left: 1.5em;
+      }
+      &.toggle-open > :first-child {
+        .link-active;
+      }
     }
+  }
 
-    @media (min-width: @screen-large) {
-        & > h2 {
-            margin-top: 1em;
-        }
-        footer {
-            .fa-quote-left {
-                margin-right: .25em;
-            }
-        }
+  @media (min-width: @screen-large) {
+    & > h2 {
+      margin-top: 1em;
     }
+    footer {
+      .fa-quote-left {
+        margin-right: .25em;
+      }
+    }
+  }
 
-    .contact {
-        //white-space: nowrap;
-        i.fa {
-            margin-right: .5em;
-            color: @color-default-lighter;
-        }
+  .contact {
+    //white-space: nowrap;
+    i.fa {
+      margin-right: .5em;
+      color: @color-default-lighter;
     }
+  }
 
 }
 
 #bottom {
-    .copyright {
-        text-shadow: 1px 1px 0 rgba(255,255,255, .05);
-        color: @color3-base-darker;
-    }
+  .copyright {
+    text-shadow: 1px 1px 0 rgba(255,255,255, .05);
+    color: @color3-base-darker;
+  }
 }

@@ -1,106 +1,106 @@
 
 section {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 
-    > h2:first-child {
-        box-shadow: 0 1px 0 rgba(255,255,255, .5);
-        border-bottom: 1px solid @color4-pale-darker;
-        text-align: center;
-        color: @color2-base;
+  > h2:first-child {
+    box-shadow: 0 1px 0 rgba(255,255,255, .5);
+    border-bottom: 1px solid @color4-pale-darker;
+    text-align: center;
+    color: @color2-base;
 
-        i.fa {
-            font-size: 1.2em;
-            margin: 0 .5em;
-            color: @color4-pale-darker;
-        }
+    i.fa {
+      font-size: 1.2em;
+      margin: 0 .5em;
+      color: @color4-pale-darker;
     }
+  }
 }
 article {
-    box-sizing: border-box;
-    padding: .5em;
+  box-sizing: border-box;
+  padding: .5em;
 
-    h3 {
-        line-height: 1.3em;
+  h3 {
+    line-height: 1.3em;
 
-        em {
-            font-size: 0.9em;
-            font-style: normal;
-            font-weight: normal;
-            font-family: 'FontText';
-            text-transform: uppercase;
-            color: @color4-base;
-        }
+    em {
+      font-size: 0.9em;
+      font-style: normal;
+      font-weight: normal;
+      font-family: 'FontText';
+      text-transform: uppercase;
+      color: @color4-base;
     }
+  }
 
-    &:nth-child(odd) {
-        background-color: rgba(0,0,0, .05);
-    }
-    > h4:first-child {
-        color: @color-default-lighter;
+  &:nth-child(odd) {
+    background-color: rgba(0,0,0, .05);
+  }
+  > h4:first-child {
+    color: @color-default-lighter;
 
-        u {
-            font-size: 0.75em;         
-            text-decoration: none;
-        }
-        em {
-            font-size: .85em;
-            float: right;
-        }
+    u {
+      font-size: 0.75em;
+      text-decoration: none;
     }
-    footer {
-        margin-bottom: @line-height / 2;
-        font-size: .85em;
-        line-height: 1.35em;
-        color: @color-default-lighter;
-        
-        b {
-            margin: 0 0.1em;
-            color: @color4-base;            
-        }
+    em {
+      font-size: .85em;
+      float: right;
     }
+  }
+  footer {
+    margin-bottom: @line-height / 2;
+    font-size: .85em;
+    line-height: 1.35em;
+    color: @color-default-lighter;
+    
+    b {
+      margin: 0 0.1em;
+      color: @color4-base;
+    }
+  }
 }
 
 @media (min-width: 960px) {
-    section > h2:first-child {
-        padding: 0 1em;
-        text-align: left;
-    }
-    article {
-        display: flex;
-        flex-direction: row;
+  section > h2:first-child {
+    padding: 0 1em;
+    text-align: left;
+  }
+  article {
+    display: flex;
+    flex-direction: row;
 
-        > h4:first-child {
-            u {
-                float: none;
-                display: block;
-                text-decoration: none;
-                font-size: 0.8em;         
-            }
-            em {
-                float: none;
-                display: block;
-            }
-        }
-
-        > :first-child {
-            width: 25%;
-        }
-        > :last-child {
-            width: 75%;
-        }
+    > h4:first-child {
+      u {
+        float: none;
+        display: block;
+        text-decoration: none;
+        font-size: 0.8em;
+      }
+      em {
+        float: none;
+        display: block;
+      }
     }
+
+    > :first-child {
+      width: 25%;
+    }
+    > :last-child {
+      width: 75%;
+    }
+  }
 }
 
 .section-reveal-init {
-    opacity: 0;
-    transform: translate(0, 1em) scale(1.05, 1.05);
-    transform-origin: center top;
+  opacity: 0;
+  transform: translate(0, 1em) scale(1.05, 1.05);
+  transform-origin: center top;
 }
 .section-reveal-show {
-    opacity: 1;
-    transform: translate(0, 0) scale(1, 1);
-    transition: all ease-out .6s .4s;
+  opacity: 1;
+  transform: translate(0, 0) scale(1, 1);
+  transition: all ease-out .6s .4s;
 }
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }

@@ -2,7 +2,7 @@
 
 ## Commands shortcuts
 
-1. To build the app locally in a "dev" environment execute `npm run env:dev` (or `npm start` which is an alias) which will:
+1. To build the app locally in a "dev" environment execute `npm run env:dev` or `npm start` which is an alias and will:
   - build the app in the `dist/` directory
   - start a local server and open your default browser
 

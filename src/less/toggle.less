@@ -2,40 +2,40 @@
 // Toggle for all screen size
 
 .toggle {
-    position: relative;
+  position: relative;
 }
 
 .toggle-full {
+  > :last-child {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+  }
+  &.toggle-open {
     > :last-child {
-        position: absolute;
-        left: -9999px;
-        opacity: 0;
+      position: relative;
+      left: 0;
+      opacity: 1;
+      transition: opacity ease 1s;
     }
-    &.toggle-open {
-        > :last-child {
-            position: relative;
-            left: 0;
-            opacity: 1;
-            transition: opacity ease 1s;
-        }
-    }
+  }
 }
 
 // Toggle only for medium screen size
 
 .toggle-medium {
-    > :first-child {
-        display: none;
-    }
+  > :first-child {
+    display: none;
+  }
 }
 @media (max-width: (@screen-large - 1)) {
-    .toggle-medium {
-        > :first-child {
-            display: block;
-        }
-        .toggle-full;
+  .toggle-medium {
+    > :first-child {
+      display: block;
     }
-    .toggle-medium-alt {
-        display: none !important;
-    }
+    .toggle-full;
+  }
+  .toggle-medium-alt {
+    display: none !important;
+  }
 }
