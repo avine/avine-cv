@@ -7,7 +7,7 @@ import scroll from "./scroll.js";
 import toggle from "./toggle.js";
 import skills from "./skills.js";
 import contact from "./contact.js";
-//import parallax from "./parallax.js";
+import parallax from "./parallax.js";
 
 $(document).ready(function ($) {
 
@@ -15,6 +15,6 @@ $(document).ready(function ($) {
   toggle($);
   skills($);
   contact($);
-  //parallax($);
+  parallax($);
 
 });
