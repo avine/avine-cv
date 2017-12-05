@@ -8,14 +8,16 @@
   outline: 1px solid #f3f3f3;
   border: 8px solid #fff;
   background-color: #f3f3f3;
+  transform-origin: center top;
   transform: rotate(12deg) skew(1deg, -1deg);
+  animation: thumb-anim 1s ease-out forwards 1s;
   &:after {
     content: "";
     display: block;
     width: 6px;
     height: 6px;
     position: absolute;
-    left: 60px;
+    left: 57px;
     top: -7px;
     box-shadow: 3px 2px 1px rgba(0,0,0, .15);
     border-radius: 6px;
@@ -41,7 +43,7 @@
     float: right;
     position: relative;
     top: -.75em;
-    right: -.75em;
+    right: -1.5em;
   }
 }
 
@@ -49,7 +51,13 @@
   #main > .thumb {
     display: block;
     position: absolute;
-    top: 0em;
-    right: 0em;
+    top: 3px;
+    right: -15px;
   }
+}
+
+@keyframes thumb-anim {
+  0%   { transform: rotate(12deg) skew(1deg, -1deg); }
+  50%  { transform: rotate(-12deg) skew(1deg, -1deg); }
+  100% { transform: rotate(12deg) skew(1deg, -1deg); }
 }
