@@ -25,7 +25,7 @@
     "_tmp:fa": "cleancss dist/css/font-awesome/css/font-awesome.min.css -o dist/tmp/1.css",
     "_tmp:app": "cleancss dist/css/app.min.css -o dist/tmp/2.css",
     "prod:css": "npm run _tmp:fa -s && npm run _tmp:app -s",
-    "postprod:css": "shx cat dist/tmp/*.css | cleancss -o dist/bundle/bundle.min.css && shx rm -r dist/tmp/",
+    "postprod:css": "shx cat dist/tmp/*.css | cleancss --skip-rebase -o dist/bundle/bundle.min.css && shx rm -r dist/tmp/",
     "prod:js": "uglifyjs dist/js/app.min.js -o dist/bundle/bundle.min.js",
     "prod:index": "node useref.js",
     "build:prod": "npm run prod:css -s && npm run prod:js -s && npm run prod:index -s",
