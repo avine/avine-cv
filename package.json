@@ -21,6 +21,7 @@
     "watch": "concurrently \"npm run watch:css -s\" \"npm run watch:js -s\" \"npm run watch:static -s\"",
     "server:dev": "browser-sync start --server dist/ --files dist/ --no-notify",
     "env:dev": "npm run build:dev -s && concurrently \"npm run watch -s\" \"npm run server:dev -s\"",
+    "start": "npm run env:dev",
     "preprod:css": "shx mkdir dist/tmp/",
     "_tmp:fa": "cleancss dist/css/font-awesome/css/font-awesome.min.css -o dist/tmp/1.css",
     "_tmp:app": "cleancss dist/css/app.min.css -o dist/tmp/2.css",
