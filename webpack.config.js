@@ -1,56 +1,53 @@
+
 const path = require("path");
 
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlPlugin = require("html-webpack-plugin");
+
+const extractCss = new ExtractTextPlugin("app.bundle.[hash].css");
 
 module.exports = {
-  // context: __dirname,
-
   entry: "./src/app.js",
 
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "[name].[hash].bundle.js"
+    path: path.resolve(__dirname, "dist"),
+    filename: "app.bundle.[hash].js"
   },
-
-  devtool: "source-map",
 
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            attrs: [":src", "link:href"]
+          }
+        }
+      },
+      {
+        test: /\.(png|jpg|gif|ico)$/,
         use: [
           {
             loader: "file-loader",
             options: {
-              name: "[name].[hash].[ext]",
-              outputPath: "images/",    // where the fonts will go
-              //publicPath: "../"      // override the default path
+              outputPath: "images/",
+              name: "[name].[hash].[ext]"
             }  
           }
         ]
       },
       {
         test: /\.less$/,
-        use: [
-          {
-            loader: "style-loader" // creates style nodes from JS strings
-          }, {
-            loader: "css-loader" // translates CSS into CommonJS
-          }, {
-            loader: "less-loader" // compiles Less to CSS
-          }
-        ]
+        use: extractCss.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "less-loader"]
+        })
       },
       {
         test: /\.css$/,
-        /*use: [
-          { loader: "style-loader/url" },
-          { loader: "css-loader" }
-        ],*/
-        use: ExtractTextPlugin.extract({
+        use: extractCss.extract({
           fallback: "style-loader",
           use: "css-loader"
         })
@@ -70,9 +67,14 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(["dist"]),
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
-    new ExtractTextPlugin("[name].[hash].bundle.css"),
-    new CopyWebpackPlugin([{ from: "./src/static/images", to: "./static/images", toType: "dir" }])
-  ]
+    new CleanPlugin("./dist"),
+    extractCss,
+    new HtmlPlugin({ template: "./src/index.html" })
+  ],
+
+  devServer: {
+    open: true,
+    host: "127.0.0.1",
+    port: 3000
+  }
 };
