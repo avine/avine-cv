@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint src/js",
     "build:dev": "webpack",
-    "start:dev": "browser-sync start --server dist/ --files dist/ --no-notify",
-    "start": "webpack-dev-server",
-    "build": "webpack -p"
+    "start:dev": "webpack-dev-server",
+    "build": "webpack -p",
+    "start": "browser-sync start --server dist/ --files dist/ --no-notify"
   },
   "repository": {
     "type": "git",
