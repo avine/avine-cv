@@ -1,5 +1,9 @@
 # My Curriculum Vitae - Avine
 
+This branch uses npm scripts to build the app.
+
+Feel free to check [this version](https://github.com/avine/avine-cv/tree/webpack) which is based on `webpack`.
+
 ## Commands shortcuts
 
 1. To build the app locally in a "dev" environment execute `npm run env:dev` which will:
