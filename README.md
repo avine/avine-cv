@@ -2,7 +2,7 @@
 
 This branch uses `webpack` to build the app.
 
-Feel free to check [this version](https://github.com/avine/avine-cv/tree/webpack) which is based on npm scripts.
+Feel free to check [this version](https://github.com/avine/avine-cv/tree/master) which is based on npm scripts.
 
 ## Usage
 
