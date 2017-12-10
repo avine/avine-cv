@@ -25,5 +25,3 @@ Feel free to check [this version](https://github.com/avine/avine-cv/tree/webpack
   }
 }
 ```
-
-![Avine](https://avine.io/cv/static/images/logos/logo-128.png)
