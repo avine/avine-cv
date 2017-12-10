@@ -2,7 +2,7 @@
 
 This branch uses npm scripts to build the app.
 
-Feel free to check [this version](https://github.com/avine/avine-cv/tree/webpack) which is based on `webpack`.
+**Feel free to check [this version](https://github.com/avine/avine-cv/tree/webpack) which is based on `webpack`.**
 
 ## Commands shortcuts
 
@@ -101,5 +101,3 @@ You'll also be able to change the source code in the `src/` directory and see th
 "env:prod": "npm run build -s && npm run server:prod -s",
 "start": "npm run env:prod",
 ```
-
-![Avine](https://avine.io/cv/static/images/logos/logo-128.png)
