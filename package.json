@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint src/js",
-    "build:dev": "webpack",
     "start:dev": "webpack-dev-server",
+    "build:dev": "webpack",
     "build": "webpack -p",
     "start": "browser-sync start --server dist/ --files dist/ --no-notify"
   },
