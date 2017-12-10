@@ -42,7 +42,10 @@ module.exports = {
         test: /\.less$/,
         use: extractCss.extract({
           fallback: "style-loader",
-          use: ["css-loader", "less-loader"]
+          use: [
+            { loader: "css-loader", options: { sourceMap: true } },
+            { loader: "less-loader", options: { sourceMap: true } }
+          ]
         })
       },
       {
@@ -58,8 +61,7 @@ module.exports = {
           loader: "file-loader",
           options: {
             name: "[name].[hash].[ext]",
-            outputPath: "fonts/",    // where the fonts will go
-            //publicPath: "../"      // override the default path
+            outputPath: "fonts/"
           }
         }]
       }
@@ -71,6 +73,8 @@ module.exports = {
     extractCss,
     new HtmlPlugin({ template: "./src/index.html" })
   ],
+
+  devtool: "source-map",
 
   devServer: {
     open: true,
