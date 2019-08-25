@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  avine-cv: 
+    build: .
+    image: avine-cv
+    container_name: avine-cv
+    ports:
+      - 80:80
